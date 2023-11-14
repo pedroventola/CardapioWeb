@@ -1,4 +1,3 @@
-
 <%@page import="model.dao.UsuarioDAO"%>
 <%@page import="model.Usuario"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>

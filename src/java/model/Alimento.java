@@ -11,14 +11,15 @@ package model;
 //atributos
 public class Alimento{
     
+    private int Id;
     private String nome;
     private String descricao;
     private String imagem;
     private float valor;
     
     // Construtor
-    public Alimento(String nome, String descricao, String imagem, float valor) {
-       
+    public Alimento(String nome, String descricao, String imagem, float valor,int id) {
+       this.Id = id;
         this.nome = nome;
         this.descricao = descricao;
         this.imagem = imagem;
@@ -27,6 +28,7 @@ public class Alimento{
     }
     
     public Alimento() {
+        this.Id = 0;
         this.nome = "";
         this.descricao = "";
         this.imagem = "";
@@ -34,6 +36,14 @@ public class Alimento{
        
     }
 //get e set
+
+    public int getId() {
+        return Id;
+    }
+
+    public void setId(int Id) {
+        this.Id = Id;
+    }
 
 
     public String getNome() {

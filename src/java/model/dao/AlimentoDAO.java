@@ -35,6 +35,7 @@ public class AlimentoDAO {
                 alimento.setDescricao(rs.getString("descricao"));
                 alimento.setImagem(rs.getString("imagem"));
                 alimento.setValor(rs.getFloat("valor"));
+                alimento.setId(rs.getInt("id_alimento"));
                 alimentos.add(alimento);
             }
             conexao.close();

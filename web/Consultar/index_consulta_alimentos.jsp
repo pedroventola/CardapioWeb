@@ -15,21 +15,42 @@
     </head>
 
     <body>
+        <!-- ... -->
+        
+
+        <script>
+            function adicionarAoCarrinho(id) {
+                var xhr = new XMLHttpRequest();
+                xhr.open("POST", "CarrinhoServlet", true);
+                xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+                xhr.onreadystatechange = function () {
+                    if (this.readyState === XMLHttpRequest.DONE && this.status === 200) {
+                        alert(this.responseText);
+                    }
+                };
+                xhr.send("idAlimento=" + id);  // Substitua ... pelos valores reais
+            }
+        </script>
+        <!-- ... -->
+
         <%
 
             AlimentoDAO alimentoDAO = new AlimentoDAO();
 
             List<Alimento> alimentos = alimentoDAO.consultarTodos();
 
-            for (Alimento alimento : alimentos) {           
-           
-           
+            for (Alimento alimento : alimentos) {
+
+
         %>
-        <img src="../<%= alimento.getImagem()%>"/>
+        <img src="..<%= alimento.getImagem()%>"/>
+        <!-- <input type="button" value="+"> -->
+        <button onclick="adicionarAoCarrinho('<%=alimento.getId()%>')">+</button>
+
         <%
             }
         %>
-        
+
 
     </body>
 </html>

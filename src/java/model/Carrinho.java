@@ -13,28 +13,39 @@ import java.util.UUID;
  * @author Pedro Ventola
  */
 public class Carrinho {
-   private String id = UUID.randomUUID().toString();
-    private List<Alimento> itens;
+
+    private String id = UUID.randomUUID().toString();
+    private int idAlimento = 0;
     private float valorTotal;
+    private String idUsuario = "";
 
     // Construtor
-    public Carrinho(List<Alimento> itens, float valotTotal) {
-        this.itens = itens;
+    public Carrinho(float valotTotal, String idUsuario, int idAlimento) {
+        this.idAlimento = idAlimento;
+        this.idUsuario = idUsuario;
         this.valorTotal = valorTotal;
-    }  
+    }
 
     public Carrinho() {
-        this.itens = new ArrayList<Alimento>();
+        this.idAlimento = 0;
+        this.idUsuario="";
         this.valorTotal = 0f;
     }
-    
-//get e set
-    public List<Alimento> getItens() {
-        return itens;
+
+    public int getIdAlimento() {
+        return idAlimento;
     }
 
-    public void setItens(List<Alimento> itens) {
-        this.itens = itens;
+    public void setIdAlimento(int idAlimento) {
+        this.idAlimento = idAlimento;
+    }
+
+    public String getIdUsuario() {
+        return idUsuario;
+    }
+
+    public void setIdUsuario(String idUsuario) {
+        this.idUsuario = idUsuario;
     }
 
     public float getValorTotal() {
