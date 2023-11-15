@@ -27,6 +27,7 @@
         
         if (usuarioDAO.cadastrar(usuario) == true){
             out.println("<br> Funcionario cadastrado com sucesso!");
+             request.getSession().setAttribute("usuario", usuario);
         }else{
             out.println("<br> <b>Funcionario não cadastrado! <b>");
         }       

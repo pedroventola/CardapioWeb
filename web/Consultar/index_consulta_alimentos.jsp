@@ -21,7 +21,7 @@
         <script>
             function adicionarAoCarrinho(id) {
                 var xhr = new XMLHttpRequest();
-                xhr.open("POST", "CarrinhoServlet", true);
+                xhr.open("POST", "/Cardapio/carrinho", true);
                 xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
                 xhr.onreadystatechange = function () {
                     if (this.readyState === XMLHttpRequest.DONE && this.status === 200) {

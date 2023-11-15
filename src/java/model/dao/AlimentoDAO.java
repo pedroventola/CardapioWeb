@@ -28,7 +28,7 @@ public class AlimentoDAO {
             String sql = "SELECT * from alimento";
             ResultSet rs = stmt.executeQuery(sql);
             List<Alimento> alimentos = new ArrayList<>();
-           
+
             while (rs.next()) {
                 Alimento alimento = new Alimento();
                 alimento.setNome(rs.getString("nome"));
@@ -50,4 +50,34 @@ public class AlimentoDAO {
             return null;
         }
     }
+
+    public Alimento consultarPorId(int id) throws ClassNotFoundException, SQLException {
+    Connection conexao = null;
+    Alimento alimento = null;
+    try {
+        conexao = ConectaDB.conectar();
+        Statement stmt = conexao.createStatement();
+        String sql = "SELECT * from alimento where id_alimento=" + id;
+        ResultSet rs = stmt.executeQuery(sql);
+
+        if (rs.next()) {
+            alimento = new Alimento();
+            alimento.setNome(rs.getString("nome"));
+            alimento.setDescricao(rs.getString("descricao"));
+            alimento.setImagem(rs.getString("imagem"));
+            alimento.setValor(rs.getFloat("valor"));
+            alimento.setId(rs.getInt("id_alimento"));
+        }
+
+    } catch (SQLException ex) {
+        System.out.println(" Exception: " + ex.toString());
+        throw ex;
+    } finally {
+        if (conexao != null) {
+            conexao.close();
+        }
+    }
+    return alimento;
+}
+
 }
