@@ -49,10 +49,10 @@ public class UsuarioServlet extends HttpServlet {
                 session.setAttribute("email", username);
 
                 // Redireciona para a página inicial
-                response.sendRedirect(request.getContextPath() + "/Cardapio/Consulta/index_consulta_alimentos.jsp");
+                response.sendRedirect(request.getContextPath() + "/Consultar/index_consulta_alimentos.jsp");
             } else {
                 // Redireciona de volta para a página de login com uma mensagem de erro
-                request.setAttribute("errorMessage", "Invalid username or password");
+                request.setAttribute("errorMessage", "Email e senha incorreto");
                 request.getRequestDispatcher("index_login.jsp").forward(request, response);
             }
 
