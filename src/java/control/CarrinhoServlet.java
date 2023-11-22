@@ -11,41 +11,41 @@ import model.Alimento;
 import model.Usuario;
 import model.dao.AlimentoDAO;
 
-@WebServlet("/carrinho/*")
+@WebServlet("/menu/*")
 public class CarrinhoServlet extends HttpServlet {
-
+    
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
+        
         try {
+            
+            Alimento alimento = new Alimento();
+            AlimentoDAO alimentoDAO = new AlimentoDAO();
+            
+            alimento = alimentoDAO.consultarPorId(Integer.parseInt(request.getParameter("idAlimento")));
+            
             CarrinhoDAO carrinhoDAO = new CarrinhoDAO();
             Carrinho carrinho = new Carrinho();
             // Obtenha os parâmetros da solicitação e defina os campos do carrinho e do usuário        
             carrinho.setIdAlimento(Integer.parseInt(request.getParameter("idAlimento")));
             Usuario usuario = (Usuario) request.getSession().getAttribute("usuario");
             carrinho.setIdUsuario(usuario.getId());
-            AlimentoDAO alimentoDAO = new AlimentoDAO();
-            Alimento alimentoBuscado;
-            alimentoBuscado = alimentoDAO.consultarPorId(Integer.parseInt(request.getParameter("idAlimento")));
-            Alimento alimento = new Alimento();
-            alimento.setValor(alimentoBuscado.getValor());
-
             carrinho.setValorTotal(alimento.getValor());
             carrinhoDAO.adicionar(carrinho);
-          
-        } catch (Exception e) {
-
-            printStackTrace(e.getMessage());
-        }
-        finally{
+            System.out.println("ALimento valor: " + alimento.getValor());
             
-              System.out.println("Usuario: " + request.getSession().getAttribute("usuario"));
+        } catch (Exception e) {
+            
+            printStackTrace(e.getMessage());
+        } finally {
+            
+            System.out.println("Usuario: " + request.getSession().getAttribute("usuario"));
             System.out.println("ID do Alimento: " + request.getParameter("idAlimento"));
-             
+            
         }
-
+        
     }
-
+    
     private void printStackTrace(String message) {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }

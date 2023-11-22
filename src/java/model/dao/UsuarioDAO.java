@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package model.dao;
 import java.sql.*;
 import model.Usuario;
@@ -38,30 +34,29 @@ public class UsuarioDAO {
             return false;
         }
     }
-   /*
-    public boolean alterarSenha(Usuario usuario) {
-        Connection conexao = null;
+   public boolean buscarUsuario(String email, String senha) {
+    Connection conexao = null;
 
-        try {
-            conexao = ConectaDB.conectar();
-            Statement stmt = conexao.createStatement();
+    try {
+        conexao = ConectaDB.conectar();
+        Statement stmt = conexao.createStatement();
 
-            //UPDATE funcionario SET nome='João', cargo='Estagiário',end_cep='08544-225',end_comp='Casa 132' WHERE 123            
-            String sql = "UPDATE funcionario SET nome='" + funcionario.getNome() + "', cargo='" + funcionario.getCargo()
-                    + "',end_cep='" + funcionario.getEnderecoCep() + "',end_comp='" + funcionario.getEnderecoComp()
-                    + "' WHERE matric = '" + funcionario.getMatric() + "'";
+        String sql = "SELECT * FROM usuario WHERE email = '" + email + "' AND senha = '" + senha + "'";
 
-            stmt.executeUpdate(sql); // Insert, Delete ou Update        
-            //System.out.println(" SQL: " + sql);
+        ResultSet rs = stmt.executeQuery(sql);
 
-            System.out.println(" Registro Alterardo com sucesso! ");
+        if (rs.next()) {           
             conexao.close();
             return true;
-
-        } catch (ClassNotFoundException | SQLException ex) {
-            System.out.println(" Erro: " + ex.toString());
+        } else {            
+            conexao.close();
             return false;
         }
+
+    } catch (ClassNotFoundException | SQLException ex) {
+        System.out.println("Exception: " + ex.toString());
+        return false;
     }
-*/
+}
+
 }

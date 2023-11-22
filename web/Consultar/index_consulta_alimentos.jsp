@@ -1,4 +1,3 @@
-
 <%@page import="java.util.List"%>
 <%@page import="java.text.SimpleDateFormat"%>
 <%@page import="model.dao.AlimentoDAO"%>
@@ -15,20 +14,18 @@
     </head>
 
     <body>
-        <!-- ... -->
-        
-
+   
         <script>
             function adicionarAoCarrinho(id) {
                 var xhr = new XMLHttpRequest();
-                xhr.open("POST", "/Cardapio/carrinho", true);
+                xhr.open("POST", "/Cardapio/menu", true);
                 xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
                 xhr.onreadystatechange = function () {
                     if (this.readyState === XMLHttpRequest.DONE && this.status === 200) {
                         alert(this.responseText);
                     }
                 };
-                xhr.send("idAlimento=" + id);  // Substitua ... pelos valores reais
+                xhr.send("idAlimento=" + id);  
             }
         </script>
         <!-- ... -->

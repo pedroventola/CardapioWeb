@@ -9,10 +9,8 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Clínica [Funcionário]</title>
     </head>
     <body>
-        <h1>Clínica - Excluir Funcionário</h1>
         <form name="FormCliExc" method="post" action="func_exc_id.jsp">
             Matrícula: <input type="text" name="matric"> <p>
             <input type="reset" value="Limpar"> 

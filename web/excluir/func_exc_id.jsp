@@ -11,10 +11,8 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Clínica [Funcionário]</title>
     </head>
     <body>
-        <h1>Clínica - Excluir Funcionário</h1>
         
         <%
         String matric = request.getParameter("matric");

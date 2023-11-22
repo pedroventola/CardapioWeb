@@ -26,10 +26,10 @@
         UsuarioDAO usuarioDAO = new UsuarioDAO();
         
         if (usuarioDAO.cadastrar(usuario) == true){
-            out.println("<br> Funcionario cadastrado com sucesso!");
+            out.println("<br> Usuário cadastrado com sucesso!");
              request.getSession().setAttribute("usuario", usuario);
         }else{
-            out.println("<br> <b>Funcionario não cadastrado! <b>");
+            out.println("<br> <b>Usuário não cadastrado! <b>");
         }       
         
         %>
