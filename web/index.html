@@ -1,32 +1,134 @@
 <!DOCTYPE html>
-<!--
-Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
-Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Html.html to edit this template
--->
 <html lang="pt-BR" data-bs-theme="auto">
-    <head>
-        <title>Início</title>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tela Inicial</title>
+</head>
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+
+    * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+        font-family: Roboto;
+    }
+
+    .fundo {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        height: 100vh;
+        overflow: hidden;
+    }
 
 
-    </head>
-    <body>
-        <h1>CARDAPIO</h1>
-        <div>
-            <a href="Consultar/index_consulta_alimentos.jsp"  target="iframe_menu" >
-                consultar  
-            </a>
-            <a href="login/index_login.jsp"  target="iframe_menu" >
-                logar  
-            </a>
-            <a href="cadastro/index_user_cad.jsp"  target="iframe_menu" >
-                cadastrar 
-            </a>
-            <a href="cadastro/index_carrinho_add.jsp"  target="iframe_menu" >
-                adicionar carrinho
-            </a>
+    h1 {
+        color: #FFF;
+        text-align: center;
 
-        </div>
-    </body>
+        font-size: 34px;
+        font-style: normal;
+        font-weight: 600;
+        line-height: normal;
+        letter-spacing: 0.34px;
+
+        width: 346px;
+        display: flex;
+        z-index: 1;
+        bottom: 15%;
+        transform: translate(-50%);
+        position: absolute;
+
+    }
+
+    .texto-principal {
+        align-self: center;
+    }
+
+    body {
+        margin: 0;
+        display: flex;
+        flex-direction: column;
+        overflow: hidden;
+    }
+
+    .proximo {
+        display: flex;
+        width: 500px;
+        height: 70px;
+        max-width: 315px;
+        padding: 21px;
+        justify-content: center;
+        align-items: center;
+        gap: 10px;
+        border: none;
+        border-radius: 16px;
+        background: #C67C4E;
+        color: white;
+        position: fixed;
+        bottom: 10px;
+        left: 50%;
+        transform: translateX(-50%);
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 600;
+        line-height: normal;
+        letter-spacing: 0.34px;
+    }
+
+    .proximo:hover {
+        background: #c67c4ec0;
+    }
+
+    .erro404 {
+        display: none;
+        /* Inicialmente, oculta a mensagem de erro */
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        text-align: center;
+    }
+
+    @media (min-width: 601px) {
+        .proximo {
+            display: none;
+        }
+
+        .erro404 {
+            display: block;
+            /* Exibe a mensagem de erro em telas maiores que 600 pixels */
+        }
+    }
+</style>
+
+<body>
+    <div class="fundo">
+        <img src="assets/tela_inicial.png" alt="">
+    </div>
+    <div class="texto-principal">
+        <h1>Um menu que apresenta comidas do melhor restaurante de SP</h1>
+        <button class="proximo"  onclick="window.location.href='login/index_login.jsp'">Abrir Cardápio</button>
+       
+    </div>
+
+    <div class="erro404">
+        <p>Não é possível acessar no computador: Erro 404</p>
+    </div>
+
+    <script>
+        // Verifica o tamanho da tela e redireciona para a página de erro se for maior que 600 pixels
+        if (window.innerWidth > 600) {
+            document.querySelector('.fundo').style.display = 'none';
+            document.querySelector('.proximo').style.display = 'none';
+            document.querySelector('.erro404').style.display = 'block';
+        }
+    </script>
+</body>
+
 </html>

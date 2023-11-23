@@ -14,7 +14,7 @@
     </head>
 
     <body>
-   
+
         <script>
             function adicionarAoCarrinho(id) {
                 var xhr = new XMLHttpRequest();
@@ -25,10 +25,10 @@
                         alert(this.responseText);
                     }
                 };
-                xhr.send("idAlimento=" + id);  
+                xhr.send("idAlimento=" + id);
             }
         </script>
-        <!-- ... -->
+        
 
         <%
 
@@ -47,7 +47,7 @@
         <%
             }
         %>
-
+        <a href="/Cardapio/logout" target="_top">Sair</a> 
 
     </body>
 </html>

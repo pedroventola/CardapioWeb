@@ -1,13 +1,16 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-<html>
+<html lang="pt-br">
+
     <head>
         <meta charset="UTF-8">
-        <title>Login</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <title>Login</title>
     </head>
     <body>
-       <script>
+        <script>
             function efetuarLogin() {
                 var email = document.getElementById('email').value;
                 var senha = document.getElementById('senha').value;
@@ -19,78 +22,147 @@
                 xhr.open("POST", "/Cardapio/logar", true);
                 xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
                 xhr.onreadystatechange = function () {
-                    if (this.readyState === XMLHttpRequest.DONE && this.status === 200) {
-                        alert(this.responseText);
+                    if (this.readyState === XMLHttpRequest.DONE) {
+                        if (this.status === 200) {
+                            // A resposta foi bem-sucedida, redirecione para a página desejada
+                            window.location.href = "/Cardapio/Consultar/index_consulta_alimentos.jsp";
+                        } else {
+                            // A resposta não foi bem-sucedida, você pode exibir uma mensagem de erro se necessário
+                            alert("Erro ao efetuar login. Por favor, verifique suas credenciais.");
+                        }
                     }
                 };
                 xhr.send("email=" + email + "&senha=" + senha);
             }
+
         </script>
-        <h2>Login</h2>
-        <div class="container">
-            <label for="email"><b>Email</b></label>
+
+        <style>
+            @import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+
+            * {
+                font-family: Roboto;
+                border: 0;
+                margin: 0;
+            }
+
+            body {
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                height: 100vh;
+                position: relative; /* Adicionado para referenciar a posição dos elementos filhos */
+            }
+
+            .titulo {
+                color: #2F2D2C;
+                text-align: center;
+                font-family: Roboto;
+                font-size: 18px;
+                font-style: normal;
+                font-weight: 600;
+                line-height: normal;
+                position: absolute;
+                top: 10px;
+            }
+
+            .login {
+                display: flex;
+                padding: 21px 109px;
+                justify-content: center;
+                align-items: center;
+                gap: 10px;
+                flex-shrink: 0;
+                color: #fff;
+                border-radius: 16px;
+                font-size: 20px;
+                background: #C67C4E;
+            }
+
+            .email,
+            .senha {
+                margin-bottom: 20px;
+            }
+
+            a {
+                width: 315px;
+                color: #878788;
+                font-family: Roboto;
+                font-size: 18px;
+                font-style: normal;
+                font-weight: 400;
+                line-height: normal;
+                justify-content: center;
+                display: flex;
+                padding: 15px;
+            }
+
+            input {
+                border-radius: 10px;
+                background: #F6F6F6;
+                box-shadow: 0px 4px 4px 2px rgba(0, 0, 0, 0.25);
+                width: 316px;
+                height: 34px;
+                flex-shrink: 0;
+            }
+
+            h1 {
+                color: #2F2D2C;
+                font-family: Roboto;
+                font-size: 20px;
+                font-style: normal;
+                font-weight: 600;
+                line-height: normal;
+            }
+
+            .cadastro {
+                text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+                text-align: center;
+                font-family: Roboto;
+                font-size: 18px;
+                font-style: normal;
+                font-weight: 435;
+                line-height: normal;
+                position: absolute;
+                bottom: 10px;
+                left: 50%;
+                transform: translateX(-50%);
+                justify-content: center;
+                display: flex;
+            }
+
+        </style>
+    <body>
+        <div class="titulo">
+            <h2>Faça seu login</h2>
+        </div>
+        <div class="email">
+            <h1>E-mail</h1>
+
             <input type="text" id="email" placeholder="Digite seu Email" required>
+        </div>
+        <div class="senha">
+            <h1>Senha</h1>
 
-            <label for="senha"><b>Senha</b></label>
             <input type="password" id="senha" placeholder="Digite sua Senha" required>
-
-            <button onclick="efetuarLogin()">Login</button>
         </div>
 
-       
+        <div class="esqueceu">
+            <a href="">Esqueceu sua senha?</a>
+        </div>
+
+        <div>
+            <button class="login" onclick="efetuarLogin()">Entrar</button>
+        </div>
+
+        <div>
+            <a class="cadastro">Não tem uma conta? Faça seu Cadastro</a>
+        </div>
     </body>
+
 </html>
 
 
-<!--<!DOCTYPE html>
-<html>
-    <head>
-        <meta charset="UTF-8">
-        <title>Login</title>
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    </head>
-    <body>
-         <script>
-            function efetuarLogin() {
-                var email = document.getElementById('email').value;
-                var senha = document.getElementById('senha').value;
-                if (!email || !senha) {
-                    document.getElementById('mensagem').innerText = 'Por favor, preencha todos os campos.';
-                    return;
-                }
 
-                fetch('/Cardapio/logar', {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/x-www-form-urlencoded'
-                    },
-                    body: 'email=' + email + '&senha=' + senha
-                })
-                .then(response => {
-                    if (!response.ok) {
-                        throw new Error('Erro ao realizar login.');
-                    }
-                    return response.text();
-                })
-                .then(data => {
-                    document.getElementById('mensagem').innerText = data;
-                })
-                .catch(error => {
-                    document.getElementById('mensagem').innerText = error.message;
-                });
-            }
-        </script>
-        <h2>Login</h2>
-        <div class="container">
-            <label for="email"><b>Email</b></label>
-            <input type="text" id="email" placeholder="Digite seu Email" required>
 
-            <label for="senha"><b>Senha</b></label>
-            <input type="password" id="senha" placeholder="Digite sua Senha" required>
-
-            <button onclick="efetuarLogin()">Login</button>
-
-            <div id="mensagem"></div>
-        </div>
-    </body>
-</html>-->
