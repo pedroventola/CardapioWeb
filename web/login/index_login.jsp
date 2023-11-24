@@ -157,7 +157,7 @@
         </div>
 
         <div>
-            <a class="cadastro">Não tem uma conta? Faça seu Cadastro</a>
+            <a class="cadastro" href="../cadastro/index_user_cad.jsp">Não tem uma conta? Faça seu Cadastro</a>
         </div>
     </body>
 
