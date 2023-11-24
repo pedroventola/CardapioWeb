@@ -25,17 +25,22 @@
                 height: 100vh;
                 position: relative; /* Adicionado para referenciar a posição dos elementos filhos */
             }
+          
             .titulo {
-                color: #2F2D2C;
-                text-align: center;
-                font-family: Roboto;
-                font-size: 18px;
-                font-style: normal;
-                font-weight: 600;
-                line-height: normal;
-                position: absolute;
-                top: 10px;
-            }
+            color: #2F2D2C;
+            text-align: center;
+            font-family: Roboto;
+            font-size: 18px;
+            font-style: normal;
+            font-weight: 600;
+            line-height: normal;
+            position: fixed;
+            top: 15px;
+            width: 100%;
+            margin-bottom: 15px;
+            z-index: 1;
+           
+        }
 
             input {
                 border-radius: 10px;
@@ -44,11 +49,13 @@
                 width: 316px;
                 height: 34px;
                 flex-shrink: 0;
+                margin-bottom: 20px;
             }
-            
+
             .enviar{
                 display: flex;
-                padding: 21px 109px;
+                width: 215px;
+                height: 55px;
                 justify-content: center;
                 align-items: center;
                 gap: 10px;
@@ -57,28 +64,58 @@
                 border-radius: 16px;
                 font-size: 20px;
                 background: #C67C4E;
+                margin-left: 85px;
             }
 
-             .cadastro {
-                margin-bottom: 20px;
+            .cadastro {
+                margin-bottom: 0px;
+                margin-top: 60px;
+                padding: 0 30px;
+               
+            }
+            label{
+                color: #2F2D2C;
+                font-family: Roboto;
+                font-size: 20px;
+                font-style: normal;
+                font-weight: 600;
+                line-height: normal;
+            }
+            .check{
+                padding: 27px;
+            }
+            .checkbox{
+                width: 20px;
+                height: 20px;
+                background: #F6F6F6;
+                box-shadow: 0px 4px 0px 0px rgba(0, 0, 0, 0.0);
+
             }
         </style>
     </head>
     <body>
         <h1 class="titulo">Crie seu cadastro</h1>
         <form name="FormUserCad" method="post" action="user_cad.jsp"> 
+
             <div class="cadastro">
-            <label for="email"><b>E-mail *</b></label>
-            <input type="text" placeholder="Digite seu e-mail" name="email" required>
-            
-            <label for="senha"><b>Senha *</b></label>
-            <input type="password" placeholder="Digite sua senha" name="senha" required>
+                <label for="email">E-mail *</label>
+                <input type="text" placeholder="Digite seu e-mail" name="email" required>
 
-            <label for="nome"><b>Nome Completo *</b></label>
-            <input type="text" placeholder="Digite seu nome completo" name="nome" required>
+                <label for="senha"><br>Senha *</label>
+                <input type="password" placeholder="Digite sua senha" name="senha" required>
 
-            <label for="endereco"><b>Endereço *</b></label>
-            <input type="text" placeholder="Digite seu endereço" name="endereco" required> 
+                <label for="nome"><br>Nome Completo *</label>
+                <input type="text" placeholder="Digite seu nome completo" name="nome" required>
+
+                <label for="endereco">Endereço *</label>
+                <input type="text" placeholder="Digite seu endereço" name="endereco" required> 
+            </div>
+
+            <div class="check">
+                <br><input class="checkbox" type="checkbox" checked="checked" name="termos"> Declaro que li e concordo com os termos e condições sobre o restaurante
+                <br><input class="checkbox" type="checkbox" checked="checked" name="newsletter"> Desejo receber newsletters do restaurante
+                <br><input class="checkbox" type="checkbox" checked="checked" name="newsletter"> Desejo receber e-mails promocionais
+
             </div>
 
             <button class="enviar" type="submit">Criar sua conta</button>
