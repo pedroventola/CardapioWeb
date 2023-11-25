@@ -25,7 +25,7 @@
                     if (this.readyState === XMLHttpRequest.DONE) {
                         if (this.status === 200) {
                             // A resposta foi bem-sucedida, redirecione para a página desejada
-                            window.location.href = "/Cardapio/Consultar/index_consulta_alimentos.jsp";
+                            window.location.href = "/Cardapio/tela_cardapio.jsp";
                         } else {
                             // A resposta não foi bem-sucedida, você pode exibir uma mensagem de erro se necessário
                             alert("Erro ao efetuar login. Por favor, verifique suas credenciais.");
