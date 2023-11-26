@@ -51,22 +51,22 @@
 <body>
     <div class="header">Pedido finalizado!</div>
     <%
-   try {
-      PedidoDAO pedidoDAO = new PedidoDAO();
-      Pedido pedido = pedidoDAO.consultarPorId(session.getAttribute("idUsuario").toString());
-%>
-<div class="order-code">Seu código é: <%= pedido.getId().substring(0, 8).toUpperCase() %></div>
-<img src="assets/giphy.gif" alt="Scooter Image">
-<div class="footer"><b>Muito bem! Agora é só aguardar que já será entregue o seu pedido.</b></div>
-<%
-   } catch (Exception e) {
-      e.printStackTrace();  // Adicione ou registre a exceção para análise
-%>
-<div class="footer"><b>Ocorreu um erro ao processar o pedido.</b></div>
-<%
-   }
-%>
+        try {
+            PedidoDAO pedidoDAO = new PedidoDAO();
+            Pedido pedido = pedidoDAO.consultarPorId(session.getAttribute("idUsuario").toString());
+    %>
+    <div class="order-code">Seu código é: <%= pedido.getId().substring(0, 8).toUpperCase()%></div>
+    <img src="assets/giphy.gif" alt="Scooter Image">
+    <div class="footer"><b>Muito bem! Agora é só aguardar que já será entregue o seu pedido.</b></div>
+    <%
+    } catch (Exception e) {
+        e.printStackTrace();  // Adicione ou registre a exceção para análise
+    %>
+    <div class="footer"><b>Ocorreu um erro ao processar o pedido.</b></div>
+    <%
+        }
+    %>
 
-                </body>
-                </html>
-                </html>
+</body>
+</html>
+</html>
