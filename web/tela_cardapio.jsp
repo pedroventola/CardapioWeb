@@ -14,14 +14,17 @@
         <title>Tela Cardápio</title>
     </head>
 
+
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Sora:wght@100&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Sora:wght@400&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Sora:wght@600&display=swap');
 
         * {
             box-sizing: border-box;
             margin: 0;
             padding: 0;
-            font-family: Roboto, sans-serif;
+            font-family: 'Sora';
         }
 
         body {
@@ -117,10 +120,26 @@
         .item-cardapio {
             display: flex;
             flex-direction: column;
-            align-items: center;
+            align-items: start;
             margin: 10px;
             background-color: rgb(238, 238, 238);
             border-radius: 15px;
+        }
+
+        .valor-cardapio {
+            display: flex;
+            align-items: center;
+        }
+
+        .detalhe-cardapio {
+            display: flex;
+            justify-items: end;
+            flex-direction: column;
+            padding-right: 12px;
+            padding-left: 12px;
+            padding-bottom: 12px;
+            gap: 8px;
+            width: 100%;
         }
 
         .botao {
@@ -133,11 +152,23 @@
             color: white;
             font-size: 16px;
             cursor: pointer;
-            margin-top: 10px;
+            text-align: center;
+        }
+
+        .botao-carrinho {
+            overflow: hidden;
+            position: fixed;
+            bottom: -1px;
+            border-radius: 24px;
+            width: 100%;
+            border: none;
+            background-color: #C67C4E;
+            box-shadow: 0px -10px 24px 0px rgba(228, 228, 228, 0.25);
+            align-items: center;
+            height: 10%;
         }
 
         .descricao-comida {
-            text-align: center;
             margin-top: 10px;
         }
 
@@ -158,6 +189,13 @@
             font-size: 18px;
             font-weight: 600;
         }
+
+        .valor-cardapio p:nth-child(1) {
+            color: #2F4B4E;
+            font-size: 18px;
+            font-weight: 600;
+            width: 100%;
+        }
     </style>
 
     <body>
@@ -172,7 +210,7 @@
             if (usuario == null) {
                 response.sendRedirect("../login/index_login.jsp");
             }
-           
+
             String nomeUsuario = (String) session.getAttribute("nomeUsuario");
         %>
 
@@ -181,7 +219,7 @@
             <img src="assets/Image.png" class="foto_perfil">
             <h1>Bem-vindo(a)</h1>
 
-            <h2><%= usuario.getNome()%></h2>
+            <h2><%= nomeUsuario%></h2>
 
             <input type="text" class="pesquisa" onclick="">
         </div>
@@ -206,48 +244,48 @@
             </div>
             <div class="item-cardapio">
                 <img src="assets/drinkvoglio.png">
-                     <div class="descricao-comida">
-                <p>Drink</p>
-                <p>Voglio laurearmi</p>
-                <p>R$40,50</p>
+                <div class="descricao-comida">
+                    <p>Drink</p>
+                    <p>Voglio laurearmi</p>
+                    <p>R$40,50</p>
+                </div>
+                <button class="botao">+</button>
             </div>
-            <button class="botao">+</button>
-        </div>
-        <div class="item-cardapio">
-            <img src="assets/drinkblue.png">
-            <div class="descricao-comida">
-                <p>Drink</p>
-                <p>Laguna Blu</p>
-                <p>R$39,90</p>
+            <div class="item-cardapio">
+                <img src="assets/drinkblue.png">
+                <div class="descricao-comida">
+                    <p>Drink</p>
+                    <p>Laguna Blu</p>
+                    <p>R$39,90</p>
+                </div>
+                <button class="botao">+</button>
             </div>
-            <button class="botao">+</button>
-        </div>
-        <div class="item-cardapio">
-            <img src="assets/tiramisu.png">
-            <div class="descricao-comida">
-                <p>Tiramisu</p>
-                <p>Com mascarpone</p>
-                <p>R$39.99</p>
+            <div class="item-cardapio">
+                <img src="assets/tiramisu.png">
+                <div class="descricao-comida">
+                    <p>Tiramisu</p>
+                    <p>Com mascarpone</p>
+                    <p>R$39.99999</p>
+                </div>
+                <button class="botao">+</button>
             </div>
-            <button class="botao">+</button>
-        </div>
-        <div class="item-cardapio">
-            <img src="assets/pizza.png">
-            <div class="descricao-comida">
-                <p>Pizza</p>
-                <p>Tradicional Italiano</p>
-                <p>R$72.50</p>
+            <div class="item-cardapio">
+                <img src="assets/pizza.png">
+                <div class="descricao-comida">
+                    <p>Pizza</p>
+                    <p>Tradicional Italiano</p>
+                    <p>R$32.50</p>
+                </div>
+                <button class="botao">+</button>
             </div>
-            <button class="botao">+</button>
         </div>
-    </div>
- <a href="/Cardapio/logout" target="_top">Sair</a> 
-    <script>
-        if (window.innerWidth > 600) {
-            document.querySelector('.proximo').style.display = 'none';
-            document.querySelector('.erro404').style.display = 'block';
-        }
-    </script>
-</body>
+        <a href="/Cardapio/logout" target="_top">Sair</a> 
+        <script>
+            if (window.innerWidth > 600) {
+                document.querySelector('.proximo').style.display = 'none';
+                document.querySelector('.erro404').style.display = 'block';
+            }
+        </script>
+    </body>
 
 </html>

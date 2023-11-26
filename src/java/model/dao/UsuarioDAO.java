@@ -47,26 +47,57 @@ public class UsuarioDAO {
 
             ResultSet rs = stmt.executeQuery(sql);
 
-            
-                if (rs.next()) {
-                    Usuario usuario = new Usuario();
-                    usuario.setId(rs.getString("id_usuario"));
-                    usuario.setNome(rs.getString("nome"));
-                    usuario.setEmail(rs.getString("email"));
-                    usuario.setSenha(rs.getString("senha"));
-                    usuario.setEndereco(rs.getString("endereco"));
+            if (rs.next()) {
+                Usuario usuario = new Usuario();
+                usuario.setId(rs.getString("id_usuario"));
+                usuario.setNome(rs.getString("nome"));
+                usuario.setEmail(rs.getString("email"));
+                usuario.setSenha(rs.getString("senha"));
+                usuario.setEndereco(rs.getString("endereco"));
 
-                    conexao.close();
-                    return usuario;                  
-                } else {
-                    conexao.close();
-                    return null;
-                }
+                conexao.close();
+                return usuario;
+            } else {
+                conexao.close();
+                return null;
+            }
 
-            }catch (ClassNotFoundException | SQLException ex) {
+        } catch (ClassNotFoundException | SQLException ex) {
             System.out.println("Exception: " + ex.toString());
             return null;
         }
-        }
-
     }
+
+    public Usuario obterUsuarioPorId(String idUsuario) {
+        Connection conexao = null;
+
+        try {
+            conexao = ConectaDB.conectar();
+            Statement stmt = conexao.createStatement();
+
+            String sql = "SELECT * FROM usuario WHERE id_usuario = '" + idUsuario + "'";
+
+            ResultSet rs = stmt.executeQuery(sql);
+
+            if (rs.next()) {
+                Usuario usuario = new Usuario();
+                usuario.setId(rs.getString("id_usuario"));
+                usuario.setNome(rs.getString("nome"));
+                usuario.setEmail(rs.getString("email"));
+                usuario.setSenha(rs.getString("senha"));
+                usuario.setEndereco(rs.getString("endereco"));
+
+                conexao.close();
+                return usuario;
+            } else {
+                conexao.close();
+                return null;
+            }
+
+        } catch (ClassNotFoundException | SQLException ex) {
+            System.out.println("Exception: " + ex.toString());
+            return null;
+        }
+    }
+
+}
