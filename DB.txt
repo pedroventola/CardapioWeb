@@ -1,0 +1,43 @@
+CREATE SCHEMA Cardapio;
+
+CREATE TABLE usuario (
+    id_usuario VARCHAR(255) PRIMARY KEY,
+    nome VARCHAR(50),
+    email VARCHAR(50),
+    senha VARCHAR(50),
+    endereco VARCHAR(255)
+);
+
+CREATE TABLE alimento (
+    id_alimento INT PRIMARY KEY,
+    nome VARCHAR(50),
+    descricao VARCHAR(255),
+    imagem VARCHAR(255),
+    valor FLOAT
+);
+
+
+CREATE TABLE carrinho (
+    id_carrinho VARCHAR(255) PRIMARY KEY,
+    itens VARCHAR(255),
+    valorTotal FLOAT,
+    id_usuario VARCHAR(255),
+    id_alimento int,
+    FOREIGN KEY (id_usuario) REFERENCES usuario(id_usuario),    
+    FOREIGN KEY (id_alimento) REFERENCES alimento(id_alimento)
+);
+
+CREATE TABLE pedido(
+    id_pedido VARCHAR(255) PRIMARY KEY,
+    id_usuario VARCHAR(255),
+    FOREIGN KEY (id_usuario) REFERENCES usuario(id_usuario)
+);
+
+INSERT INTO `alimento`(`id_alimento`, `nome`, `descricao`, `imagem`, `valor`) VALUES 
+(1, 'Conchiglione','Ao molho sugo','/assets/conchiglione.png',60.90),
+(2, 'Drink','Laguna Blu','/assets/drinkblue.png',39.90),
+(3, 'Drink','Voglio laurearmi','/assets/drinkvoglio.png',40.53),
+(4, 'Tortellini','Com brodo','/assets/tortellini.png',79.99),
+(5, 'Tiramisu','Com mascarpone','/assets/tiramisu.png',39.99),
+(6, 'Pizza','Tradicional Italiano','/assets/pizza.png',72.50)
+
