@@ -129,10 +129,10 @@
         <title>Cardápio</title>
     </head>
 
-<% 
-    UsuarioDAO usuarioDAO = new UsuarioDAO(); 
-    Usuario usuario = usuarioDAO.obterUsuarioPorId(session.getAttribute("idUsuario").toString());
-%>
+    <%
+        UsuarioDAO usuarioDAO = new UsuarioDAO();
+        Usuario usuario = usuarioDAO.obterUsuarioPorId(session.getAttribute("idUsuario").toString());
+    %>
 
 
     <body>
@@ -162,11 +162,11 @@
                 <h1 class="title">Carrinho</h1>
                 <p class="sub-title">Endereço de entrega</p>
                 <div class="container-endereco">
-<p class="text-bold"><%= usuario.getEndereco() %></p>
+                    <p class="text-bold"><%= usuario.getEndereco()%></p>
                 </div>
 
                 <%
-                    
+
                     CarrinhoDAO carrinhoDAO = new CarrinhoDAO();
                     List<Carrinho> resultados = carrinhoDAO.consultarPorUsuario(session.getAttribute("idUsuario").toString());
                     Alimento alimento = new Alimento();
@@ -176,7 +176,7 @@
                         int idAlimento = carrinho.getIdAlimento();
                         alimento = alimentoDAO.consultarPorId(idAlimento);
 
-                        totalPagamento += alimento.getValor();                        
+                        totalPagamento += alimento.getValor();
                 %>
 
                 <div class="container-alimentos">

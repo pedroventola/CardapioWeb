@@ -36,7 +36,7 @@
         <%
             String nome = request.getParameter("nome");
             String email = request.getParameter("email");
-            String endereco = request.getParameter("end");
+            String endereco = request.getParameter("endereco");
             String senha = request.getParameter("senha");
 
             Usuario usuario = new Usuario();
