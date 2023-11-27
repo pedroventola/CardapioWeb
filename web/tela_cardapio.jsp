@@ -265,7 +265,7 @@
                 <div class="descricao-comida">
                     <p>Tiramisu</p>
                     <p>Com mascarpone</p>
-                    <p>R$39.99999</p>
+                    <p>R$39.99</p>
                 </div>
                 <button class="botao">+</button>
             </div>
